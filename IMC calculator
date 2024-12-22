@@ -1,0 +1,101 @@
+using System; 
+
+class Program
+{
+    static int Idade, peso, Altura; 
+    static float IMC;
+    static string Nome;
+
+    static void Massa()
+    {
+        do
+        {
+            Console.WriteLine("Diz o teu peso em KILOGRAMAS.");
+            peso = int.Parse(Console.ReadLine());
+
+        } while (peso < 30 || peso > 200);
+
+    }
+
+    static void Comprimento()
+    {
+        do
+        {
+            Console.WriteLine("Diz a tua altura em CENTÍMETROS.");
+            Altura = int.Parse(Console.ReadLine());
+
+        } while (Altura < 100 || Altura > 250);
+
+    }
+
+    static void IndiceMC()
+    {
+        float AlturaFinal = Altura / 100.0f;
+        IMC = peso / (AlturaFinal * AlturaFinal); 
+
+    }
+
+    static void ClassificaIMC()
+    {
+        Console.WriteLine("Teu IMC e: " + IMC);
+
+        if (IMC < 17)
+        {
+            Console.WriteLine("Classificacao: Subnutrido.");
+
+        }
+        else if (IMC >= 17 && IMC < 18.5)
+        {
+            Console.WriteLine("Classificacao: Magro.");
+
+        }
+        else if (IMC >= 18.5 && IMC < 25)
+        {
+            Console.WriteLine("Classificacao: Peso Ideal.");
+
+        }
+        else if (IMC >= 25 && IMC < 30)
+        {
+            Console.WriteLine("Classificacao: Excesso de Peso.");
+
+        }
+        else if (IMC >= 30 && IMC < 35)
+        {
+            Console.WriteLine("Classificacao: Obesidade Moderada (Grau 1).");
+
+        }
+        else if (IMC >= 35 && IMC < 40)
+        {
+            Console.WriteLine("Classificacao: Obesidade Grave (Grau 2).");
+
+        }
+        else if (IMC >= 40)
+        {
+            Console.WriteLine("Classificacao: Obesidade Mórbida (Grau 3).");
+
+        }
+    }
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Diga seu nome.");
+        Nome = Console.ReadLine();
+
+        Console.WriteLine("=== INDICE DE MASSA CORPORAL ===");
+        Console.WriteLine("Autor: " + Nome);
+        Console.WriteLine("===================================================");
+
+        do
+        {
+            Console.WriteLine("Diz a tua idade entre 19 a 64.");
+            Idade = int.Parse(Console.ReadLine());
+
+        } while (Idade < 19 || Idade > 64);
+
+        Massa();
+        Comprimento();
+        IndiceMC();
+        ClassificaIMC();
+
+    }
+}
